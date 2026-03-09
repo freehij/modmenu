@@ -1,3 +1,3 @@
-rootProject.name = 'ExampleMod'
+rootProject.name = 'ModMenu'
 
 includeBuild 'mcartifact'

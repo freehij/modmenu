@@ -46,7 +46,7 @@ public class ModMenuScreen extends Screen {
 
     public static void openConfig() {
         String modId = list.getSelected().modInfo.id();
-        Runnable customConfig = ModMenu.getCustomConfig("modId");
+        Runnable customConfig = ModMenu.getCustomConfig(modId);
         if (customConfig != null) {
             customConfig.run();
         } else {
