@@ -3,7 +3,7 @@ package io.github.freehij.screen;
 import io.github.freehij.ModMenu;
 import io.github.freehij.loader.Loader;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.Screen;
@@ -56,9 +56,9 @@ public class ModMenuScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        super.render(graphics, mouseX, mouseY, delta);
-        graphics.drawString(this.font, "Mod Menu " + ModMenu.version, 2, this.height - 10, Integer.MAX_VALUE);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
+        graphics.text(this.font, "Mod Menu " + ModMenu.version, 2, this.height - 10, Integer.MAX_VALUE);
     }
 
     protected static class ModList extends ObjectSelectionList<ModList.ModEntry> {
@@ -92,8 +92,8 @@ public class ModMenuScreen extends Screen {
             }
 
             @Override
-            public void renderContent(GuiGraphics graphics, int mouseX, int mouseY, boolean hovered, float a) {
-                graphics.drawString(Minecraft.getInstance().font, this.text, this.getX() + 3, this.getY() + 3, 0xffffffff);
+            public void extractContent(GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float a) {
+                graphics.text(Minecraft.getInstance().font, this.text, this.getX() + 3, this.getY() + 3, 0xffffffff);
             }
         }
     }
