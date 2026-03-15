@@ -13,12 +13,16 @@ public class ModMenu {
     static final Map<String, Config> modIdToConfigMap = new HashMap<>();
     public static ModMenu.Config config;
     static String autoSave = "auto-save(FOR_DEV_PURPOSES_ONLY)";
+    public static String disableButtonFix = "disable-button-fix(FOR_FABRIC_MOD_MENU)";
     static final Map<String, Runnable> modIdToCustomConfigMap = new HashMap<>();
 
     public static void initConfig() {
         config = ModMenu.Config.fromModId("modmenu");
         if (config.getValue(autoSave) == null) {
             config.setValue(autoSave, "true");
+        }
+        if (config.getValue(disableButtonFix) == null) {
+            config.setValue(disableButtonFix, "false");
         }
     }
 

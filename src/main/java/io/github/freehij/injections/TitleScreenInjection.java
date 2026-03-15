@@ -1,5 +1,6 @@
 package io.github.freehij.injections;
 
+import io.github.freehij.ModMenu;
 import io.github.freehij.loader.annotation.EditClass;
 import io.github.freehij.loader.annotation.Inject;
 import io.github.freehij.loader.util.InjectionHelper;
@@ -21,7 +22,17 @@ public class TitleScreenInjection {
                 new Class<?>[] { GuiEventListener.class },
                 Button.builder(Component.literal("Mods"),
                         button -> Minecraft.getInstance().setScreen(new ModMenuScreen()))
-                        .bounds(ts.width / 2 - 32, 2, 64, 20)
+                        .bounds(ts.width / 2 - 32, shouldFixMenu() ? 14 : 2, 64, 20)
                         .build());
+    }
+
+    static boolean shouldFixMenu() {
+        if (ModMenu.config.getValue(ModMenu.disableButtonFix).equalsIgnoreCase("true")) return false;
+        try {
+            Class.forName("com.terraformersmc.modmenu.ModMenu");
+            return true;
+        } catch (ClassNotFoundException ignored) {
+            return false;
+        }
     }
 }
