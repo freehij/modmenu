@@ -14,6 +14,7 @@ repositories {
 dependencies {
     compileOnly files('libs/loader.jar')
     compileOnly 'com.mojang:brigadier:1.3.10'
+    compileOnly 'com.mojang:datafixerupper:9.0.19'
 }
 
 mcartifact {
