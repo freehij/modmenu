@@ -21,7 +21,7 @@ public class TitleScreenInjection {
         tsR.invokeRaw("addRenderableWidget",
                 new Class<?>[] { GuiEventListener.class },
                 Button.builder(Component.literal("Mods"),
-                        button -> Minecraft.getInstance().setScreen(new ModMenuScreen()))
+                        button -> Minecraft.getInstance().gui.setScreen(new ModMenuScreen()))
                         .bounds(ts.width / 2 - 32, shouldFixMenu() ? 14 : 2, 64, 20)
                         .build());
     }

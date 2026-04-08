@@ -35,7 +35,7 @@ public class ModMenuScreen extends Screen {
                 .build();
         configButton.active = false;
         this.addRenderableWidget(configButton);
-        this.addRenderableWidget(Button.builder(Component.literal("Done"), button -> mc.setScreen(null))
+        this.addRenderableWidget(Button.builder(Component.literal("Done"), button -> mc.gui.setScreen(null))
                 .bounds(this.width / 2 + 15, this.height - 37, 155, 20)
                 .build());
         this.addRenderableWidget(Button.builder(Component.literal("D"),
